@@ -1,0 +1,3 @@
+[submodule "webpush-protobuf"]
+	path = webpush-protobuf
+	url = git@github.com:nokamoto/webpush-protobuf.git
