@@ -12,5 +12,8 @@ PB.targets in Compile := Seq(
 libraryDependencies ++= Seq(
   "com.thesamet.scalapb" %% "scalapb-runtime" % scalapb.compiler.Version.scalapbVersion % "protobuf",
   "com.squareup.okhttp" % "okhttp" % "2.7.5",
-  "org.scalatest" %% "scalatest" % "3.0.5" % Test
+  "com.google.crypto.tink" % "apps-webpush" % "1.2.0",
+  "com.auth0" % "java-jwt" % "3.4.0",
+  "org.scalatest" %% "scalatest" % "3.0.5" % Test,
+  "com.squareup.okhttp" % "mockwebserver" % "2.7.5" % Test
 )
