@@ -15,5 +15,25 @@ libraryDependencies ++= Seq(
   "com.google.crypto.tink" % "apps-webpush" % "1.2.0",
   "com.auth0" % "java-jwt" % "3.4.0",
   "org.scalatest" %% "scalatest" % "3.0.5" % Test,
-  "com.squareup.okhttp" % "mockwebserver" % "2.7.5" % Test
+  "com.squareup.okhttp" % "mockwebserver" % "2.7.5" % Test,
+  "com.typesafe.play" %% "play-json" % "2.6.10" % Test
 )
+
+testOptions in Test += Tests.Argument(TestFrameworks.ScalaTest,
+                                      "-l",
+                                      "com.github.nokamoto.webpush.FirefoxTest")
+
+lazy val Firefox = config("firefox").extend(Test)
+
+configs(Firefox)
+
+inConfig(Firefox)(Defaults.testTasks)
+
+testOptions in Firefox -= Tests.Argument(
+  TestFrameworks.ScalaTest,
+  "-l",
+  "com.github.nokamoto.webpush.FirefoxTest")
+testOptions in Firefox += Tests.Argument(
+  TestFrameworks.ScalaTest,
+  "-n",
+  "com.github.nokamoto.webpush.FirefoxTest")
