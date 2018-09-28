@@ -52,9 +52,36 @@ jobs:
               - "~/.ivy2/cache"
               - "~/.sbt"
               - "~/.m2"
+  publish:
+    docker:
+      - image: openjdk:8
+    steps:
+      - restore_cache:
+          key: sbt-cache
+      - checkout
+      - run:
+          name: Checkout submodule
+          command: |
+            git submodule init
+            git submodule update --remote
+      - run:
+          name: Install sbt
+          command: |
+            curl -Ls https://git.io/sbt > /usr/local/bin/sbt
+            chmod u+x /usr/local/bin/sbt
+      - run:
+          name: sbt publishSigned
+          command: |
+            mkdir -p ~/.sbt/gpg
+            echo $GPG_SECRET_KEY | base64 --decode > ~/.sbt/gpg/secring.asc
+            sbt publishSigned
 workflows:
   version: 2
   ci:
     jobs:
       - build
       - firefox
+      - publish:
+          requires:
+            - build
+            - firefox
