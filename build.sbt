@@ -1,5 +1,7 @@
 scalaVersion := "2.12.6"
 
+name := "webpush-scala"
+
 organization := "com.github.nokamoto"
 
 version := "0.0.0-SNAPSHOT"
