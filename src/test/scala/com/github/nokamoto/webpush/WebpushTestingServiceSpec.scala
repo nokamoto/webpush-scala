@@ -4,6 +4,8 @@ import java.util.Base64
 
 import com.github.nokamoto.webpush.WebpushTestingServiceSpec.FirefoxTest
 import com.github.nokamoto.webpush.WebpushTestingServiceSpec.Suite
+import com.github.nokamoto.webpush.protobuf.Message
+import com.github.nokamoto.webpush.protobuf.PushSubscription
 import com.google.protobuf.ByteString
 import com.squareup.okhttp.OkHttpClient
 import com.squareup.okhttp.Request
@@ -12,8 +14,6 @@ import org.scalatest.FlatSpec
 import org.scalatest.Tag
 import play.api.libs.json.Json
 import play.api.libs.json.OFormat
-import webpush.protobuf.Message
-import webpush.protobuf.PushSubscription
 
 /**
   * @see [[https://github.com/nokamoto/webpush-testing-service]]
