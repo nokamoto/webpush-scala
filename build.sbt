@@ -6,17 +6,10 @@ organization := "com.github.nokamoto"
 
 version := "0.0.0-SNAPSHOT"
 
-PB.protoSources in Compile := (file("webpush-protobuf/webpush/protobuf").getCanonicalFile * AllPassFilter).get
-
-PB.includePaths in Compile := Seq(file("webpush-protobuf").getCanonicalFile,
-                                  target.value / "protobuf_external")
-
-PB.targets in Compile := Seq(
-  scalapb
-    .gen(grpc = false, flatPackage = true) -> (sourceManaged in Compile).value)
+resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
 
 libraryDependencies ++= Seq(
-  "com.thesamet.scalapb" %% "scalapb-runtime" % scalapb.compiler.Version.scalapbVersion % "protobuf",
+  "com.github.nokamoto" %% "webpush-protobuf" % "0.0.0-SNAPSHOT",
   "com.squareup.okhttp" % "okhttp" % "2.7.5",
   "com.google.crypto.tink" % "apps-webpush" % "1.2.0",
   "com.auth0" % "java-jwt" % "3.4.0",
