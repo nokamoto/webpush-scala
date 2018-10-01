@@ -4,6 +4,7 @@ import java.util.Base64
 import java.util.Date
 
 import com.auth0.jwt.JWT
+import com.github.nokamoto.webpush.protobuf.Message
 import com.google.protobuf.ByteString
 import com.squareup.okhttp.mockwebserver.MockResponse
 import com.squareup.okhttp.mockwebserver.MockWebServer
@@ -12,7 +13,6 @@ import com.squareup.okhttp.OkHttpClient
 import org.scalatest.Matchers._
 import org.scalatest.Assertion
 import org.scalatest.AsyncFlatSpec
-import webpush.protobuf.Message
 
 import scala.concurrent.Future
 import scala.collection.JavaConverters._

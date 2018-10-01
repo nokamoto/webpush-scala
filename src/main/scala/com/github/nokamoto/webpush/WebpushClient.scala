@@ -8,10 +8,10 @@ import java.util.Date
 
 import com.auth0.jwt.JWT
 import com.auth0.jwt.algorithms.Algorithm
+import com.github.nokamoto.webpush.protobuf.Message
 import com.google.crypto.tink.apps.webpush.WebPushHybridEncrypt
 import com.google.crypto.tink.subtle.EllipticCurves
 import com.squareup.okhttp._
-import webpush.protobuf.Message
 
 import scala.concurrent.Future
 import scala.concurrent.Promise
