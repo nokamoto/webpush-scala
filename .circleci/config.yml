@@ -22,12 +22,12 @@ jobs:
             - "~/.ivy2/cache"
             - "~/.sbt"
             - "~/.m2"
-  firefox:
+  webpush-testing-service:
       docker:
         - image: nokamoto13/webpush-testing-service:0.0.0
       steps:
         - restore_cache:
-            key: sbt-cache-firefox
+            key: sbt-cache-webpush-testing-service
         - run:
             command: apt-get install -y git
         - checkout
@@ -40,9 +40,9 @@ jobs:
             command: xvfb-run /webpush-testing-service/bin/webpush-testing-service
             background: yes
         - run:
-            command: sbt firefox:test
+            command: sbt webpush-testing-service:test
         - save_cache:
-            key: sbt-cache-firefox
+            key: sbt-cache-webpush-testing-service
             paths:
               - "~/.ivy2/cache"
               - "~/.sbt"
@@ -70,8 +70,8 @@ workflows:
   ci:
     jobs:
       - build
-      - firefox
+      - webpush-testing-service
       - publish:
           requires:
             - build
-            - firefox
+            - webpush-testing-service
