@@ -18,25 +18,26 @@ libraryDependencies ++= Seq(
   "com.typesafe.play" %% "play-json" % "2.6.10" % Test
 )
 
-testOptions in Test += Tests.Argument(TestFrameworks.ScalaTest,
-                                      "-l",
-                                      "com.github.nokamoto.webpush.FirefoxTest")
-
-lazy val Firefox = config("firefox").extend(Test)
-
-configs(Firefox)
-
-inConfig(Firefox)(Defaults.testTasks)
-
-testOptions in Firefox -= Tests.Argument(
+testOptions in Test += Tests.Argument(
   TestFrameworks.ScalaTest,
   "-l",
-  "com.github.nokamoto.webpush.FirefoxTest")
+  "com.github.nokamoto.webpush.WebpushTestingServiceTest")
 
-testOptions in Firefox += Tests.Argument(
+lazy val WebpushTestingService = config("webpush-testing-service").extend(Test)
+
+configs(WebpushTestingService)
+
+inConfig(WebpushTestingService)(Defaults.testTasks)
+
+testOptions in WebpushTestingService -= Tests.Argument(
+  TestFrameworks.ScalaTest,
+  "-l",
+  "com.github.nokamoto.webpush.WebpushTestingServiceTest")
+
+testOptions in WebpushTestingService += Tests.Argument(
   TestFrameworks.ScalaTest,
   "-n",
-  "com.github.nokamoto.webpush.FirefoxTest")
+  "com.github.nokamoto.webpush.WebpushTestingServiceTest")
 
 useGpg := false
 
