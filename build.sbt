@@ -4,12 +4,15 @@ name := "webpush-scala"
 
 organization := "com.github.nokamoto"
 
-version := "0.0.0-SNAPSHOT"
+version := "0.0.0"
 
-resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
+resolvers += Resolver.sonatypeRepo("releases")
+
+licenses := Seq(
+  "MIT License" -> url("http://www.opensource.org/licenses/mit-license"))
 
 libraryDependencies ++= Seq(
-  "com.github.nokamoto" %% "webpush-protobuf" % "0.0.0-SNAPSHOT",
+  "com.github.nokamoto" %% "webpush-protobuf" % "0.0.0",
   "com.squareup.okhttp" % "okhttp" % "2.7.5",
   "com.google.crypto.tink" % "apps-webpush" % "1.2.0",
   "com.auth0" % "java-jwt" % "3.4.0",
@@ -61,3 +64,5 @@ sonatypeProjectHosting := Some(
 scmInfo := Some(
   ScmInfo(url("https://github.com/nokamoto/webpush-scala"),
           "scm:git@github.com:nokamoto/webpush-scala.git"))
+
+publishConfiguration := publishConfiguration.value.withOverwrite(true)
