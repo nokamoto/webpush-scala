@@ -4,7 +4,7 @@ name := "webpush-scala"
 
 organization := "com.github.nokamoto"
 
-version := "0.0.1-SNAPSHOT"
+version := "0.0.1"
 
 resolvers += Resolver.sonatypeRepo("releases")
 
